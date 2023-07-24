@@ -210,12 +210,49 @@ lapply(c('kings', 'fresno'), county_summary)
 DT::datatable(county_summary('kings'))
 
 
+# 7/19/23 ---- 
+
+
+dat %>% 
+  # pulling out non-expired facilities
+  filter(license_expiration_date > date("2023-06-15")) %>% 
+  group_by(license_expiration_date) %>% 
+  count() %>% 
+  ggplot() +
+  # this is fugly
+  geom_line(aes(x = license_expiration_date, y = n))
+
+
+# 1435 expired licenses
+dat %>% 
+  filter(license_expiration_date < date("2023-06-15")) %>% 
+  nrow()
 
 
 
+# 7/23/23 ---- 
 
 
 
+dat$quarter_year <- quarter(dat$license_expiration_date, with_year = T)
+
+dat %>% 
+  filter(quarter_year >= 2022.1) %>% 
+  mutate(quarter_string = paste0(
+    str_extract(quarter_year, "^\\d{4}"), 
+    " Q", 
+    str_extract(quarter_year, "(?<=\\.)\\d")
+    )) %>% 
+  ggplot() +
+  geom_bar(aes(x = quarter_string)) +
+  theme_minimal() +
+  labs(y = "Number of Facilities",
+       title = "License Expiration Date of Health Facilites") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        axis.title.x = element_blank()) 
+
+
+class(dat$quarter_year) # "numeric"
 
 
 
