@@ -21,14 +21,16 @@ library(bslib)
 
 # data ----
 
+
 county_sf <- st_read(dsn = "data", layer = "county_borders")
-dat <- read_excel("health_facility_locations.xlsx") %>% 
+dat <- read_excel("data/health_facility_locations.xlsx") %>% 
   clean_names()
 
 
 dat$quarter_year <- quarter(dat$license_expiration_date, with_year = T)
 dat <- dat %>% 
   filter(county_name != "CURRY")
+
 
 # elements ----
 
@@ -97,7 +99,6 @@ p1_row2 <- fluidRow(
 
 ui <- fluidPage(
     
-    # try Morph next
     theme = bslib::bs_theme(bootswatch = "united"),
     
     useShinydashboard(),
@@ -260,7 +261,7 @@ server <- function(input, output) {
     })
     
     output$mean_capacity <- shinydashboard::renderValueBox({
-      # not sure if $ syntax works with reactive objects
+ 
       messy_mean <- chosen_county() %>% pull(capacity) %>% mean()
       
       shinydashboard::valueBox(
@@ -271,6 +272,7 @@ server <- function(input, output) {
     })
     
     output$quarters <- renderPlotly({
+      
       quarter_plot <- dat %>% 
         filter(quarter_year >= 2022.1) %>% 
         mutate(quarter_string = paste0(
