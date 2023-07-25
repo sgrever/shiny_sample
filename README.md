@@ -12,3 +12,15 @@ The second tab of the app, "**State Measures**" produces a summary of the entire
 ![p2a](https://github.com/sgrever/shiny_sample/assets/65444406/efce6a31-e610-476f-a3f9-34fb8f2d0d9b)
 ![p2b](https://github.com/sgrever/shiny_sample/assets/65444406/9686f746-4c03-4c6b-ac46-05bf8681b780)
 ![p2c](https://github.com/sgrever/shiny_sample/assets/65444406/9a3172dc-a5a6-497f-9872-98d8a2be71b3)
+
+In addition to these packages, this project leveraged:  
+
+* `dplyr`
+* `ggplot2`
+* `lubridate`
+* `janitor`
+* `forcats`
+* `stringr`
+* `glue`
+* `bslib`
+* `shinyWidgets`
