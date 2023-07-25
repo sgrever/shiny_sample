@@ -7,7 +7,7 @@ The first page of the app, "**County Measures**", displays information about the
 ![p1b](https://github.com/sgrever/shiny_sample/assets/65444406/0cb51ca0-7556-4b7e-a3d3-5659ec9d7f51)
 
 
-The second tab of the app, "**State Measures**" produces a summary of the entire statewide dataset. The top plot displays license expiration dates categorized into yearly quarters. The table below can be filtered and downloaded by the user. This page utilizes `plotly` and `reactable` widgets:    
+The second tab of the app, "**State Measures**" produces a summary of the entire statewide dataset. The top plot displays license expiration dates categorized into yearly quarters. The table shows the full dataset, which can be filtered and downloaded by the user. This page utilizes `plotly` and `reactable` widgets:    
 
 ![p2a](https://github.com/sgrever/shiny_sample/assets/65444406/efce6a31-e610-476f-a3f9-34fb8f2d0d9b)
 ![p2b](https://github.com/sgrever/shiny_sample/assets/65444406/9686f746-4c03-4c6b-ac46-05bf8681b780)
